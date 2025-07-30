@@ -335,3 +335,37 @@
   animation: glow-border 2s ease-in-out infinite;
   border-radius: 1rem; /* Matches rounded-xl */
 }
+
+
+@keyframes scrollVertLoop {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+
+
+.bg-multi-scroll {
+  background-image: url('https://images.prismic.io/responsiveio/aHT8jUMqNJQqH1xt_invicti-green.png?auto=format,compress'), url('https://images.prismic.io/responsiveio/aDbzDCdWJ-7kSnzb_megan_cutter.jpg?auto=format,compress'); /* Update paths */
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, contain;
+  background-position: top center, bottom center;
+  animation: scrollVertLoop 40s linear infinite;
+  opacity: 0.15;
+  animation: scrollVertLoop 30s linear infinite;
+  background-blend-mode: overlay;
+}
+
+.nextjs-portal {
+  display: none !important;
+}
+#__next-build-watcher {
+  display: none !important;
+}
+
+.nextjs-toast{
+  display: none !important;
+}

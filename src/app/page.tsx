@@ -7,7 +7,9 @@ import PartnerTypes from "./TechnologyPartners";
 import NavSection from "./NavSection";
 import AnimationVideoSection from "./AnimationVideo";
 import './main.css'; 
-
+import FlowAnimation from "./FlowAnimation";
+import ScrollToTop from "./ScrollToTop";
+import { Toaster, toast } from 'react-hot-toast';
 export default function Home() {
   return (
     <>  
@@ -18,6 +20,8 @@ export default function Home() {
       <WhyPartner />
       <AnimationVideoSection />
       <PartnerTypes />
+      <ScrollToTop />
+      <Toaster />
     </main>
      </>
   );
