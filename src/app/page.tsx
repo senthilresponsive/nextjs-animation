@@ -10,18 +10,20 @@ import './main.css';
 import FlowAnimation from "./FlowAnimation";
 import ScrollToTop from "./ScrollToTop";
 import { Toaster, toast } from 'react-hot-toast';
+import ROI_Calculator from "./ROICalculator";
 export default function Home() {
   return (
     <>  
     <main>
       <NavSection />
       <HeroSection />
+      <ROI_Calculator />
       <CustomerStories />
       <WhyPartner />
       <AnimationVideoSection />
       <PartnerTypes />
       <ScrollToTop />
-      <Toaster />
+      
     </main>
      </>
   );
