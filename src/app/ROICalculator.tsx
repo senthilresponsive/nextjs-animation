@@ -180,74 +180,55 @@ const ROI_Calculator = () => {
         />
       </div>
 
-      {/* Role Table */}
-      <div className="overflow-x-auto">
-        <table className="w-full border border-gray-200 rounded-lg overflow-hidden">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="p-3 text-left text-gray-700">Department</th>
-              <th className="p-3 text-left text-gray-700">Headcount</th>
-              <th className="p-3 text-left text-gray-700">Hours</th>
-              <th className="p-3 text-left text-gray-700">Average $/Hour</th>
-              <th className="p-3 text-left text-gray-700"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {roles.map((role) => (
-              <tr key={role.id} className="border-t transition">
-                <td>
-                  <input
-                    value={role.department}
-                    onChange={(e) =>
-                      updateRole(role.id, "department", e.target.value)
-                    }
-                    className="border border-gray-300 p-1 rounded w-full"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="number"
-                    value={role.headCount}
-                    onChange={(e) =>
-                      updateRole(role.id, "headCount", e.target.value)
-                    }
-                    className="border border-gray-300 p-1 rounded w-full"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="number"
-                    value={role.hours}
-                    onChange={(e) =>
-                      updateRole(role.id, "hours", e.target.value)
-                    }
-                    className="border border-gray-300 p-1 rounded w-full"
-                  />
-                </td>
-                <td>
-                  <input
-                    type="number"
-                    value={role.average}
-                    onChange={(e) =>
-                      updateRole(role.id, "average", e.target.value)
-                    }
-                    className="border border-gray-300 p-1 rounded w-full"
-                  />
-                </td>
-                <td className="text-center">
-                  <button
-                    onClick={() => removeRole(role.id)}
-                    className="p-1 rounded hover:bg-red-50"
-                  >
-                    <TrashIcon className="w-5 h-5 text-red-500" />
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      {/* Header for Div Rows */}
+      <div className="grid md:grid-cols-5 gap-4 p-3 font-semibold text-gray-700 bg-gray-100 rounded sticky top-0 z-10">
+        <span>Department</span>
+        <span>Headcount</span>
+        <span>Hours</span>
+        <span>Average $/Hour</span>
       </div>
 
+      {/* Role Rows */}
+      {roles.map((role, index) => (
+        <div
+          key={role.id}
+          className={`grid md:grid-cols-5 gap-4 p-4 border rounded-lg items-center transition-all duration-200 
+          ${index % 2 === 0 ? "bg-gray-50" : "bg-white"} 
+          hover:bg-pink-50 hover:shadow-md`}
+        >
+          <input
+            value={role.department}
+            onChange={(e) => updateRole(role.id, "department", e.target.value)}
+            className="border border-gray-300 p-1 rounded w-full"
+          />
+          <input
+            type="number"
+            value={role.headCount}
+            onChange={(e) => updateRole(role.id, "headCount", e.target.value)}
+            className="border border-gray-300 p-1 rounded w-full"
+          />
+          <input
+            type="number"
+            value={role.hours}
+            onChange={(e) => updateRole(role.id, "hours", e.target.value)}
+            className="border border-gray-300 p-1 rounded w-full"
+          />
+          <input
+            type="number"
+            value={role.average}
+            onChange={(e) => updateRole(role.id, "average", e.target.value)}
+            className="border border-gray-300 p-1 rounded w-full"
+          />
+          <button
+            onClick={() => removeRole(role.id)}
+            className="p-1 rounded hover:bg-red-50"
+          >
+            <TrashIcon className="w-5 h-5 text-red-500" />
+          </button>
+        </div>
+      ))}
+
+      {/* Add Role Button */}
       <button
         onClick={addRole}
         className="flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white px-5 py-2 rounded-lg shadow hover:scale-105 transition-transform"
@@ -269,7 +250,6 @@ const ROI_Calculator = () => {
 
       {/* Charts */}
       <div className="grid md:grid-cols-2 gap-8">
-        {/* Cost Chart */}
         <div>
           <h2 className="text-xl font-bold text-gray-700 mb-4 text-center">
             Cost Comparison
@@ -285,8 +265,6 @@ const ROI_Calculator = () => {
             </BarChart>
           </ResponsiveContainer>
         </div>
-
-        {/* Hour Chart */}
         <div>
           <h2 className="text-xl font-bold text-gray-700 mb-4 text-center">
             Hour Comparison
